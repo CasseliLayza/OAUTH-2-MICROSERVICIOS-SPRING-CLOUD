@@ -122,7 +122,7 @@ public class SecurityConfig {
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
                 .redirectUri("http://127.0.0.1:8090/login/oauth2/code/client-app")
-                .redirectUri("http://13.219.89.102:8090/authorized")
+                .redirectUri("http://10.10.0.106:8090/authorized")
                 .postLogoutRedirectUri("http://127.0.0.1:8090/logout")
                 .scope(OidcScopes.OPENID)
                 .scope(OidcScopes.PROFILE)
