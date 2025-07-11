@@ -121,9 +121,9 @@ public class SecurityConfig {
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri("http://127.0.0.1:8090/login/oauth2/code/client-app")
-                .redirectUri("http://127.0.0.1:8090/authorized")
-                .postLogoutRedirectUri("http://127.0.0.1:8090/logout")
+                .redirectUri("http://10.10.0.106:8090/login/oauth2/code/client-app")
+                .redirectUri("http://10.10.0.106:8090/authorized")
+                .postLogoutRedirectUri("http://10.10.0.106:8090/logout")
                 .scope(OidcScopes.OPENID)
                 .scope(OidcScopes.PROFILE)
                 .tokenSettings(TokenSettings
