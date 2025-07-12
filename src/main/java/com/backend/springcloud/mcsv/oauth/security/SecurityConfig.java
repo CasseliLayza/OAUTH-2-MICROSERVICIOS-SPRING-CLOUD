@@ -6,6 +6,7 @@ import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -48,6 +49,9 @@ public class SecurityConfig {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Value("${config.base-url.endpoint.ms-gateway}")
+    private String gatewayUrl;
 
 
     @Bean
@@ -121,9 +125,9 @@ public class SecurityConfig {
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri("http://13.219.89.102:8090/login/oauth2/code/client-app")
-                .redirectUri("http://13.219.89.102:8090/authorized")
-                .postLogoutRedirectUri("http://13.219.89.102:8090/logout")
+                .redirectUri(String.format("http://%s:8090/login/oauth2/code/client-app", gatewayUrl))
+                .redirectUri(String.format("http://%s:8090/authorized", gatewayUrl))
+                .postLogoutRedirectUri(String.format("http://%s:8090/logout", gatewayUrl))
                 .scope(OidcScopes.OPENID)
                 .scope(OidcScopes.PROFILE)
                 .tokenSettings(TokenSettings
